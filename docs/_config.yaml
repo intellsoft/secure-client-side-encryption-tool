@@ -1,0 +1,218 @@
+# _config.yml
+
+# تنظیمات اصلی سایت
+title: ابزار رمزگذاری امن آنلاین - IntellSoft
+description: سیستم رمزنگاری ۱۰۰٪ سمت کلاینت بدون نیاز به سرور. رمزگذاری متن و فایل با الگوریتم‌های AES-GCM، ChaCha20، RSA، Twofish
+baseurl: ""
+url: "https://intellsoft.github.io/secure-client-side-encryption-tool"
+lang: "fa-IR"
+direction: rtl
+timezone: Asia/Tehran
+
+# مشخصات مالک
+author:
+  name: تیم فنی IntellSoft
+  email: support@intellsoft.ir
+  url: https://intellsoft.ir
+  twitter: "@IntellSoft_IR"
+  github: "intellsoft"
+
+# تنظیمات ساخت (اگر از Jekyll استفاده می‌کنید)
+theme: null # غیرفعال کردن تم Jekyll برای سایت استاتیک
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# تنظیمات سفارشی
+primary_color: "#4361ee"
+secondary_color: "#3a0ca3"
+accent_color: "#7209b7"
+github_repo: "https://github.com/intellsoft/secure-client-side-encryption-tool"
+demo_url: "https://intellsoft.ir/encryption-tool"
+
+# ویژگی‌های ابزار رمزنگاری
+features:
+  - title: ۱۰۰٪ سمت کلاینت
+    icon: 🔒
+    description: تمام عملیات در مرورگر شما انجام می‌شود، هیچ داده‌ای به سرور ارسال نمی‌گردد
+  - title: چند الگوریتمی
+    icon: ⚙️
+    description: پشتیبانی از AES-GCM، ChaCha20، RSA و Twofish
+  - title: رمزگذاری فایل
+    icon: 📁
+    description: رمزگذاری فایل‌ها تا ۱۰ مگابایت بدون آپلود بر روی سرور
+  - title: مدیریت کلید
+    icon: 🔑
+    description: ذخیره و مدیریت امن کلیدهای رمزنگاری در مرورگر
+  - title: رابط فارسی
+    icon: 🇮🇷
+    description: رابط کاربری فارسی با چیدمان راست‌به‌چپ
+  - title: رایگان و متن‌باز
+    icon: 🆓
+    description: استفاده کاملاً رایگان و کد منبع باز
+
+# الگوریتم‌های پشتیبانی شده
+algorithms:
+  - name: "AES-GCM"
+    description: "استاندارد رمزنگاری پیشرفته با احراز هویت - 256 بیت"
+    security: "عالی"
+    speed: "سریع"
+    use_case: "متن، فایل، ارتباطات امن"
+    
+  - name: "ChaCha20-Poly1305"
+    description: "الگوریتم مدرن و سریع استفاده شده در TLS 1.3"
+    security: "عالی"
+    speed: "بسیار سریع"
+    use_case: "موبایل، سرورهای پرترافیک"
+    
+  - name: "RSA-OAEP"
+    description: "رمزنگاری نامتقارن با کلید عمومی و خصوصی"
+    security: "عالی"
+    speed: "متوسط"
+    use_case: "تبادل کلید، امضای دیجیتال"
+    
+  - name: "Twofish"
+    description: "الگوریتم امن با اندازه بلوک 128 بیتی، فینالیست AES"
+    security: "عالی"
+    speed: "سریع"
+    use_case: "فایل‌ها، ارتباطات امن"
+
+# کاربردهای ابزار
+applications:
+  - رمزگذاری پیام‌های محرمانه
+  - محافظت از فایل‌های حساس
+  - آموزش مفاهیم رمزنگاری
+  - تست امنیت الگوریتم‌ها
+  - توسعه پروژه‌های امنیتی
+  - تحقیق در حوزه کریپتوگرافی
+
+# راهنمای استفاده
+guide_steps:
+  - انتخاب الگوریتم رمزنگاری از بین ۴ گزینه موجود
+  - انتخاب تب متن یا فایل برای رمزگذاری
+  - وارد کردن متن یا آپلود فایل (تا ۱۰ مگابایت)
+  - وارد کردن کلید رمزنگاری یا تولید کلید تصادفی
+  - کلیک بر روی دکمه رمزگذاری یا رمزگشایی
+  - ذخیره یا کپی کردن نتیجه
+
+# نکات امنیتی
+security_notes:
+  - کلیدها فقط در حافظه مرورگر ذخیره می‌شوند
+  - پاک کردن تاریخچه مرورگر باعث حذف کلیدها می‌شود
+  - هیچ داده‌ای به سرور ارسال نمی‌شود
+  - برای اطلاعات بسیار حساس از روش‌های تکمیلی استفاده کنید
+  - کلیدهای خود را در جای امن نگهداری کنید
+
+# تنظیمات SEO
+seo:
+  title: "رمزگذاری آنلاین امن | ابزار رمزنگاری متن و فایل | IntellSoft"
+  description: "سیستم رمزگذاری ۱۰۰٪ سمت کلاینت بدون نیاز به سرور. رمزنگاری متن و فایل با الگوریتم‌های AES-GCM، ChaCha20، RSA، Twofish"
+  keywords:
+    - "رمزگذاری آنلاین"
+    - "رمزنگاری متن"
+    - "رمزگذاری فایل"
+    - "امنیت اطلاعات"
+    - "رمزگذاری سمت کلاینت"
+    - "ابزار امنیتی"
+    - "AES آنلاین"
+    - "ChaCha20"
+    - "RSA رمزنگاری"
+    - "Twofish"
+    - "کریپتوگرافی"
+    - "امنیت سایبری"
+  og_image: "/images/og-image.jpg"
+  twitter_card: "summary_large_image"
+
+# خدمات تخصصی IntellSoft
+services:
+  - name: "توسعه نرم‌افزار سفارشی"
+    icon: "💻"
+    description: "طراحی و توسعه سیستم‌های نرم‌افزاری متناسب با نیازهای کسب‌وکار"
+    
+  - name: "امنیت سایبری"
+    icon: "🛡️"
+    description: "پیاده‌سازی راهکارهای امنیتی پیشرفته و تست نفوذپذیری"
+    
+  - name: "هوش مصنوعی"
+    icon: "🤖"
+    description: "توسعه راهکارهای مبتنی بر AI و اتوماسیون فرآیندها"
+    
+  - name: "تحلیل داده"
+    icon: "📊"
+    description: "طراحی دشبوردهای تحلیلی و سیستم‌های گزارش‌گیری"
+
+# تنظیمات فنی
+technical:
+  frontend:
+    - HTML5
+    - CSS3 (CSS Variables, Flexbox, Grid)
+    - JavaScript ES6+
+    - Web Crypto API
+    - CryptoJS Library
+  features:
+    - طراحی واکنش‌گرا (Responsive)
+    - پشتیبانی از حالت تاریک/روشن
+    - Drag & Drop برای فایل‌ها
+    - LocalStorage برای ذخیره‌سازی
+    - Progressive Web App آماده
+  browsers:
+    - Chrome 60+
+    - Firefox 55+
+    - Safari 11+
+    - Edge 79+
+
+# اطلاعات پروژه
+project:
+  version: "1.0.0"
+  release_date: "2023-11-15"
+  license: "MIT"
+  repository: "https://github.com/intellsoft/secure-client-side-encryption-tool"
+  issues: "https://github.com/intellsoft/secure-client-side-encryption-tool/issues"
+  documentation: "https://github.com/intellsoft/secure-client-side-encryption-tool/wiki"
+
+# اطلاعات تماس
+contact:
+  email: "support@intellsoft.ir"
+  website: "https://intellsoft.ir"
+  github: "https://github.com/intellsoft"
+  twitter: "https://twitter.com/IntellSoft_IR"
+  telegram: "https://t.me/intellsoft"
+
+# محتوای مستثنی شده از پردازش Jekyll
+exclude:
+  - "node_modules"
+  - "package.json"
+  - "package-lock.json"
+  - "README.md"
+  - "LICENSE"
+  - ".gitignore"
+  - ".nojekyll"
+  - "CNAME"
+  - "Gemfile"
+  - "Gemfile.lock"
+
+# تنظیمات اضافی برای Jekyll
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+      permalink: "/:title/"
+  
+  - scope:
+      path: "assets/images"
+    values:
+      image: true
+
+# تنظیمات SASS
+sass:
+  style: compressed
+  sass_dir: _sass
+
+# تنظیمات خوراک
+feed:
+  path: feed.xml
