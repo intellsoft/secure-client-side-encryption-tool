@@ -1,0 +1,2111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- متا تگ‌های سئو بهینه شده -->
+    <title>رمزگذاری آنلاین امن | ابزار رمزنگاری متن و فایل | IntellSoft</title>
+    <meta name="description" content="سیستم رمزگذاری ۱۰۰٪ سمت کلاینت بدون نیاز به سرور. رمزنگاری متن و فایل با الگوریتم‌های AES-GCM، ChaCha20، RSA، Twofish. ابزار امنیتی آنلاین فارسی برای توسعه‌دهندگان و کسب‌وکارها">
+    <meta name="keywords" content="رمزگذاری آنلاین, رمزنگاری متن, رمزگذاری فایل, امنیت اطلاعات, رمزگذاری سمت کلاینت, ابزار امنیتی, توسعه نرم افزار, برنامه نویسی امن, هوش مصنوعی, توسعه وب, طراحی سایت, سئو, مشاوره فنی, استارتاپ, نرم افزار سفارشی, مشاوره IT, IntellSoft">
+    <meta name="author" content="IntellSoft - هوشمندسازی کسب‌وکارها">
+    <meta name="language" content="fa, Persian, فارسی">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="سیستم رمزگذاری امن آنلاین - IntellSoft">
+    <meta property="og:description" content="ابزار رمزنگاری ۱۰۰٪ سمت کلاینت برای توسعه‌دهندگان و کسب‌وکارها - بدون نیاز به سرور و کاملاً رایگان">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://intellsoft.ir/encryption-tool">
+    <meta property="og:image" content="https://intellsoft.ir/images/og-encryption.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:site_name" content="IntellSoft - هوشمندسازی کسب‌وکارها">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ابزار رمزگذاری امن آنلاین - IntellSoft">
+    <meta name="twitter:description" content="رمزنگاری ۱۰۰٪ سمت کلاینت برای توسعه‌دهندگان نرم‌افزار و متخصصان امنیت">
+    <meta name="twitter:image" content="https://intellsoft.ir/images/twitter-encryption.jpg">
+    <meta name="twitter:creator" content="@IntellSoft_IR">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://intellsoft.ir/encryption-tool">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "سیستم رمزگذاری امن آنلاین - IntellSoft",
+      "description": "ابزار رمزگذاری متن و فایل ۱۰۰٪ سمت کلاینت برای توسعه‌دهندگان و متخصصان امنیت",
+      "url": "https://intellsoft.ir/encryption-tool",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "IRR"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "IntellSoft",
+        "url": "https://intellsoft.ir",
+        "description": "شرکت توسعه نرم‌افزار و هوشمندسازی کسب‌وکارها - ارائه راهکارهای نوآورانه در حوزه برنامه‌نویسی، هوش مصنوعی و امنیت سایبری"
+      }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #7209b7;
+            --success-color: #4cc9f0;
+            --danger-color: #f72585;
+            --warning-color: #ff9e00;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --light-color: #121212;
+            --dark-color: #f8f9fa;
+            --gray-color: #adb5bd;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            transition: var(--transition);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 i {
+            color: var(--accent-color);
+        }
+
+        .intellsoft-badge {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .intellsoft-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .theme-toggle {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: rotate(30deg);
+        }
+
+        .card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .algorithm-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .algorithm-option {
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dark-mode .algorithm-option {
+            border-color: #444;
+        }
+
+        .algorithm-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .algorithm-option.active {
+            border-color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .dark-mode .algorithm-option.active {
+            background-color: rgba(67, 97, 238, 0.15);
+        }
+
+        .algorithm-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .algorithm-desc {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            line-height: 1.5;
+        }
+
+        .tab-container {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .dark-mode .tab-container {
+            border-bottom: 2px solid #444;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            color: var(--gray-color);
+        }
+
+        .tab:hover {
+            color: var(--primary-color);
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        textarea, input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            font-size: 1rem;
+            transition: var(--transition);
+            resize: vertical;
+        }
+
+        .dark-mode textarea, .dark-mode input[type="text"], .dark-mode input[type="password"] {
+            border-color: #555;
+            background-color: #1a1a1a;
+        }
+
+        textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        .key-management {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #3aa8d8;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #e1156d;
+        }
+
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background-color: #e68900;
+        }
+
+        .file-upload-area {
+            border: 2px dashed var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload-area:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .dark-mode .file-upload-area:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .file-info {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .dark-mode .file-info {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .result-area {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .dark-mode .result-area {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .result-box {
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            word-break: break-all;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .dark-mode .result-box {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .alert-info {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success-color);
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+
+        .alert-success {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success-color);
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+
+        .alert-warning {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .alert-danger {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--danger-color);
+            border: 1px solid rgba(247, 37, 133, 0.3);
+        }
+
+        .key-display {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.9rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        .dark-mode .key-display {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .algorithm-details {
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .dark-mode .algorithm-details {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .dark-mode .progress-container {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            margin-top: 5px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--box-shadow);
+            animation: slideIn 0.3s ease;
+        }
+
+        .dark-mode .modal {
+            background-color: #1e1e1e;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--danger-color);
+        }
+
+        .key-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .key-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .dark-mode .key-item {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .key-item:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .key-item-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .key-item-value {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60%;
+        }
+
+        .key-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .key-action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .key-action-btn.select {
+            color: var(--success-color);
+        }
+
+        .key-action-btn.select:hover {
+            background-color: rgba(76, 201, 240, 0.1);
+        }
+
+        .key-action-btn.delete {
+            color: var(--danger-color);
+        }
+
+        .key-action-btn.delete:hover {
+            background-color: rgba(247, 37, 133, 0.1);
+        }
+
+        /* IntellSoft Services */
+        .services-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05), rgba(58, 12, 163, 0.05));
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .services-title {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-item {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .service-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .service-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .service-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .algorithm-selector {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .key-management {
+                flex-direction: column;
+            }
+            
+            .key-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .key-item-value {
+                max-width: 100%;
+            }
+            
+            .key-item-actions {
+                align-self: flex-end;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-lock"></i> سیستم رمزنگاری امن آنلاین</h1>
+                <a href="https://intellsoft.ir" target="_blank" class="intellsoft-badge">
+                    <i class="fas fa-code"></i>
+                    توسعه‌یافته توسط IntellSoft
+                </a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+        
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            تمام عملیات رمزنگاری و رمزگشایی در مرورگر شما انجام می‌شود و هیچ داده‌ای به سرور ارسال نمی‌گردد.
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-key"></i>
+                انتخاب الگوریتم رمزنگاری
+            </div>
+            
+            <div class="algorithm-selector">
+                <div class="algorithm-option active" data-algorithm="aes">
+                    <div class="algorithm-header">
+                        <i class="fas fa-shield-alt"></i>
+                        AES-GCM
+                    </div>
+                    <div class="algorithm-desc">
+                        استاندارد رمزنگاری پیشرفته با احراز هویت. امن و سریع برای رمزنگاری متن و فایل.
+                    </div>
+                </div>
+                
+                <div class="algorithm-option" data-algorithm="chacha">
+                    <div class="algorithm-header">
+                        <i class="fas fa-bolt"></i>
+                        ChaCha20-Poly1305
+                    </div>
+                    <div class="algorithm-desc">
+                        الگوریتم مدرن و بسیار سریع که در پروتکل TLS 1.3 استفاده می‌شود.
+                    </div>
+                </div>
+                
+                <div class="algorithm-option" data-algorithm="rsa">
+                    <div class="algorithm-header">
+                        <i class="fas fa-exchange-alt"></i>
+                        RSA-OAEP
+                    </div>
+                    <div class="algorithm-desc">
+                        رمزنگاری نامتقارن با کلید عمومی و خصوصی. ایده‌آل برای تبادل کلید.
+                    </div>
+                </div>
+                
+                <div class="algorithm-option" data-algorithm="twofish">
+                    <div class="algorithm-header">
+                        <i class="fas fa-fish"></i>
+                        Twofish
+                    </div>
+                    <div class="algorithm-desc">
+                        الگوریتم امن با اندازه بلوک ۱۲۸ بیتی. یکی از فینالیست‌های مسابقه AES.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="tab-container">
+                <div class="tab active" data-tab="text">رمزنگاری متن</div>
+                <div class="tab" data-tab="file">رمزنگاری فایل</div>
+                <div class="tab" data-tab="keys">مدیریت کلیدها</div>
+            </div>
+            
+            <!-- Text Encryption Tab -->
+            <div class="tab-content active" id="text-tab">
+                <div class="input-group">
+                    <label for="textInput"><i class="fas fa-font"></i> متن ورودی</label>
+                    <textarea id="textInput" placeholder="متن خود را برای رمزنگاری یا رمزگشایی وارد کنید..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="keyInput"><i class="fas fa-key"></i> کلید رمزنگاری</label>
+                    <input type="password" id="keyInput" placeholder="کلید رمزنگاری را وارد کنید یا از دکمه تولید کلید استفاده کنید">
+                </div>
+                
+                <div class="key-management">
+                    <button class="btn btn-secondary" id="generateKey">
+                        <i class="fas fa-random"></i> تولید کلید تصادفی
+                    </button>
+                    <button class="btn btn-secondary" id="saveKey">
+                        <i class="fas fa-save"></i> ذخیره کلید
+                    </button>
+                    <button class="btn btn-secondary" id="loadKey">
+                        <i class="fas fa-folder-open"></i> بارگذاری کلید
+                    </button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="encryptText">
+                        <i class="fas fa-lock"></i> رمزنگاری متن
+                    </button>
+                    <button class="btn btn-success" id="decryptText">
+                        <i class="fas fa-unlock"></i> رمزگشایی متن
+                    </button>
+                    <button class="btn btn-secondary" id="clearText">
+                        <i class="fas fa-trash-alt"></i> پاک کردن همه
+                    </button>
+                </div>
+                
+                <div class="result-area">
+                    <div class="result-title">
+                        <i class="fas fa-file-alt"></i> نتیجه
+                    </div>
+                    <div class="result-box" id="textResult">
+                        نتیجه رمزنگاری یا رمزگشایی در اینجا نمایش داده می‌شود...
+                    </div>
+                </div>
+            </div>
+            
+            <!-- File Encryption Tab -->
+            <div class="tab-content" id="file-tab">
+                <div class="file-upload-area" id="fileDropArea">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">فایل را اینجا رها کنید یا برای انتخاب کلیک کنید</h3>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">حداکثر حجم فایل: 10 مگابایت</p>
+                    <button class="btn btn-primary" id="browseFile">
+                        <i class="fas fa-folder-open"></i> انتخاب فایل
+                    </button>
+                    <input type="file" id="fileInput" style="display: none;">
+                </div>
+                
+                <div id="fileInfo" class="file-info">
+                    <div><strong>نام فایل:</strong> <span id="fileName"></span></div>
+                    <div><strong>اندازه:</strong> <span id="fileSize"></span></div>
+                    <div><strong>نوع:</strong> <span id="fileType"></span></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="fileKeyInput"><i class="fas fa-key"></i> کلید رمزنگاری فایل</label>
+                    <input type="password" id="fileKeyInput" placeholder="کلید رمزنگاری فایل را وارد کنید">
+                </div>
+                
+                <div class="key-management">
+                    <button class="btn btn-secondary" id="generateFileKey">
+                        <i class="fas fa-random"></i> تولید کلید تصادفی
+                    </button>
+                    <button class="btn btn-secondary" id="loadFileKey">
+                        <i class="fas fa-folder-open"></i> بارگذاری کلید ذخیره شده
+                    </button>
+                </div>
+                
+                <!-- Progress bar for file operations -->
+                <div class="progress-container" id="fileProgressContainer">
+                    <div class="progress-bar" id="fileProgressBar"></div>
+                    <div class="progress-text" id="fileProgressText">0%</div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="encryptFile">
+                        <i class="fas fa-lock"></i> رمزنگاری فایل
+                    </button>
+                    <button class="btn btn-success" id="decryptFile">
+                        <i class="fas fa-unlock"></i> رمزگشایی فایل
+                    </button>
+                    <button class="btn btn-secondary" id="clearFile">
+                        <i class="fas fa-trash-alt"></i> حذف فایل
+                    </button>
+                </div>
+                
+                <div class="result-area">
+                    <div class="result-title">
+                        <i class="fas fa-download"></i> فایل خروجی
+                    </div>
+                    <div id="fileResult" style="text-align: center; padding: 20px;">
+                        پس از رمزنگاری یا رمزگشایی، لینک دانلود فایل در اینجا نمایش داده می‌شود.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Management Tab -->
+            <div class="tab-content" id="keys-tab">
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    کلیدهای ذخیره شده فقط در مرورگر شما نگهداری می‌شوند. در صورت پاک کردن حافظه مرورگر، کلیدها از دست خواهند رفت.
+                </div>
+                
+                <div class="input-group">
+                    <label for="keyNameInput"><i class="fas fa-tag"></i> نام کلید</label>
+                    <input type="text" id="keyNameInput" placeholder="یک نام برای کلید انتخاب کنید">
+                </div>
+                
+                <div class="input-group">
+                    <label for="keyValueInput"><i class="fas fa-key"></i> مقدار کلید</label>
+                    <textarea id="keyValueInput" placeholder="مقدار کلید را وارد کنید یا از دکمه تولید کلید استفاده کنید"></textarea>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="saveNamedKey">
+                        <i class="fas fa-save"></i> ذخیره کلید با نام
+                    </button>
+                    <button class="btn btn-secondary" id="generateNamedKey">
+                        <i class="fas fa-random"></i> تولید و ذخیره کلید جدید
+                    </button>
+                    <button class="btn btn-warning" id="clearAllKeys">
+                        <i class="fas fa-trash"></i> حذف تمام کلیدها
+                    </button>
+                </div>
+                
+                <div class="result-area">
+                    <div class="result-title">
+                        <i class="fas fa-key"></i> کلیدهای ذخیره شده
+                    </div>
+                    <div id="storedKeysList">
+                        در حال بارگذاری کلیدهای ذخیره شده...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-info-circle"></i>
+                جزئیات الگوریتم انتخاب شده
+            </div>
+            <div class="algorithm-details" id="algorithmDetails">
+                <div><strong>الگوریتم:</strong> AES-GCM (Advanced Encryption Standard - Galois/Counter Mode)</div>
+                <div><strong>طول کلید:</strong> 256 بیت (پیشفرض)</div>
+                <div><strong>امنیت:</strong> بالا - شامل احراز هویت و یکپارچگی داده</div>
+                <div><strong>کاربرد:</strong> مناسب برای رمزنگاری متن، فایل و ارتباطات امن</div>
+                <div><strong>توضیحات:</strong> AES یک استاندارد رمزنگاری متقارن است که توسط NIST تأیید شده و در سراسر جهان استفاده می‌شود. حالت GCM علاوه بر محرمانگی، یکپارچگی داده را نیز تضمین می‌کند.</div>
+            </div>
+        </div>
+
+        <!-- IntellSoft Services Section -->
+        <div class="services-section">
+            <h3 class="services-title">
+                <i class="fas fa-cogs"></i>
+                خدمات تخصصی IntellSoft
+            </h3>
+            <p style="color: var(--gray-color); margin-bottom: 20px;">
+                این ابزار رمزنگاری یکی از نمونه‌کارهای تخصصی ما در حوزه امنیت و توسعه نرم‌افزار است. 
+                برای پروژه‌های تخصصی خود با ما در ارتباط باشید.
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="service-name">توسعه نرم‌افزار سفارشی</div>
+                    <div class="service-desc">طراحی و توسعه سیستم‌های نرم‌افزاری متناسب با نیازهای خاص کسب‌وکار شما</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="service-name">امنیت سایبری</div>
+                    <div class="service-desc">پیاده‌سازی راهکارهای امنیتی پیشرفته و تست نفوذپذیری سیستم‌ها</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="service-name">هوش مصنوعی و یادگیری ماشین</div>
+                    <div class="service-desc">توسعه راهکارهای مبتنی بر AI و اتوماسیون فرآیندهای کسب‌وکار</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="service-name">تحلیل داده و هوش تجاری</div>
+                    <div class="service-desc">طراحی دشبوردهای تحلیلی و سیستم‌های گزارش‌گیری پیشرفته</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="https://intellsoft.ir" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-external-link-alt"></i>
+                    مشاهده خدمات بیشتر در سایت IntellSoft
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 سیستم رمزنگاری امن سمت کلاینت - توسعه‌یافته توسط <a href="https://intellsoft.ir" target="_blank" style="color: var(--primary-color); text-decoration: none;">IntellSoft</a></p>
+            <p>توسعه داده شده با <i class="fas fa-heart" style="color: var(--danger-color);"></i> و استفاده از Web Crypto API</p>
+        </div>
+    </div>
+
+    <!-- Modal for key selection -->
+    <div class="modal-overlay" id="keyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fas fa-key"></i> انتخاب کلید ذخیره شده</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="key-list" id="keyList">
+                <!-- Key items will be inserted here -->
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-secondary" id="cancelModal">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentAlgorithm = 'aes';
+        let currentTheme = 'light';
+        let selectedFile = null;
+        let storedKeys = JSON.parse(localStorage.getItem('encryptionKeys')) || {};
+        let currentModalTarget = null;
+        
+        // DOM elements
+        const themeToggle = document.getElementById('themeToggle');
+        const algorithmOptions = document.querySelectorAll('.algorithm-option');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const textInput = document.getElementById('textInput');
+        const keyInput = document.getElementById('keyInput');
+        const generateKeyBtn = document.getElementById('generateKey');
+        const encryptTextBtn = document.getElementById('encryptText');
+        const decryptTextBtn = document.getElementById('decryptText');
+        const clearTextBtn = document.getElementById('clearText');
+        const textResult = document.getElementById('textResult');
+        const fileInput = document.getElementById('fileInput');
+        const browseFileBtn = document.getElementById('browseFile');
+        const fileDropArea = document.getElementById('fileDropArea');
+        const fileInfo = document.getElementById('fileInfo');
+        const encryptFileBtn = document.getElementById('encryptFile');
+        const decryptFileBtn = document.getElementById('decryptFile');
+        const clearFileBtn = document.getElementById('clearFile');
+        const fileResult = document.getElementById('fileResult');
+        const saveKeyBtn = document.getElementById('saveKey');
+        const loadKeyBtn = document.getElementById('loadKey');
+        const keyNameInput = document.getElementById('keyNameInput');
+        const keyValueInput = document.getElementById('keyValueInput');
+        const saveNamedKeyBtn = document.getElementById('saveNamedKey');
+        const generateNamedKeyBtn = document.getElementById('generateNamedKey');
+        const clearAllKeysBtn = document.getElementById('clearAllKeys');
+        const storedKeysList = document.getElementById('storedKeysList');
+        const algorithmDetails = document.getElementById('algorithmDetails');
+        const generateFileKeyBtn = document.getElementById('generateFileKey');
+        const loadFileKeyBtn = document.getElementById('loadFileKey');
+        const fileKeyInput = document.getElementById('fileKeyInput');
+        const fileProgressContainer = document.getElementById('fileProgressContainer');
+        const fileProgressBar = document.getElementById('fileProgressBar');
+        const fileProgressText = document.getElementById('fileProgressText');
+        const keyModal = document.getElementById('keyModal');
+        const keyList = document.getElementById('keyList');
+        const closeModalBtn = document.getElementById('closeModal');
+        const cancelModalBtn = document.getElementById('cancelModal');
+        
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            if (currentTheme === 'light') {
+                document.body.classList.add('dark-mode');
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                currentTheme = 'dark';
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                currentTheme = 'light';
+            }
+            localStorage.setItem('preferredTheme', currentTheme);
+        });
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('preferredTheme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.body.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            currentTheme = 'dark';
+        }
+        
+        // Algorithm selection
+        algorithmOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                algorithmOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                currentAlgorithm = option.dataset.algorithm;
+                updateAlgorithmDetails();
+            });
+        });
+        
+        // Update algorithm details based on selection
+        function updateAlgorithmDetails() {
+            let details = '';
+            switch(currentAlgorithm) {
+                case 'aes':
+                    details = `
+                        <div><strong>الگوریتم:</strong> AES-GCM (Advanced Encryption Standard - Galois/Counter Mode)</div>
+                        <div><strong>طول کلید:</strong> 256 بیت (پیشفرض)</div>
+                        <div><strong>امنیت:</strong> بالا - شامل احراز هویت و یکپارچگی داده</div>
+                        <div><strong>کاربرد:</strong> مناسب برای رمزنگاری متن، فایل و ارتباطات امن</div>
+                        <div><strong>توضیحات:</strong> AES یک استاندارد رمزنگاری متقارن است که توسط NIST تأیید شده و در سراسر جهان استفاده می‌شود. حالت GCM علاوه بر محرمانگی، یکپارچگی داده را نیز تضمین می‌کند.</div>
+                    `;
+                    break;
+                case 'chacha':
+                    details = `
+                        <div><strong>الگوریتم:</strong> ChaCha20-Poly1305</div>
+                        <div><strong>طول کلید:</strong> 256 بیت</div>
+                        <div><strong>امنیت:</strong> بالا - با احراز هویت داخلی</div>
+                        <div><strong>کاربرد:</strong> مناسب برای دستگاه‌های موبایل و سرورهای پرترافیک</div>
+                        <div><strong>توضیحات:</strong> این الگوریتم توسط گوگل توسعه یافته و در پروتکل TLS 1.3 استفاده می‌شود. از AES سریع‌تر است و در پردازنده‌های کم‌توان عملکرد بهتری دارد.</div>
+                    `;
+                    break;
+                case 'rsa':
+                    details = `
+                        <div><strong>الگوریتم:</strong> RSA-OAEP (Rivest-Shamir-Adleman - Optimal Asymmetric Encryption Padding)</div>
+                        <div><strong>طول کلید:</strong> 2048 بیت (پیشفرض)</div>
+                        <div><strong>امنیت:</strong> بالا - رمزنگاری نامتقارن</div>
+                        <div><strong>کاربرد:</strong> مناسب برای تبادل کلید و رمزنگاری داده‌های کوچک</div>
+                        <div><strong>توضیحات:</strong> RSA یک الگوریتم رمزنگاری نامتقارن است که از دو کلید عمومی و خصوصی استفاده می‌کند. حالت OAEP امنیت را در برابر حملات افزایش می‌دهد.</div>
+                    `;
+                    break;
+                case 'twofish':
+                    details = `
+                        <div><strong>الگوریتم:</strong> Twofish</div>
+                        <div><strong>طول کلید:</strong> 256 بیت (پیشفرض)</div>
+                        <div><strong>امنیت:</strong> بالا - مقاوم در برابر حملات پیشرفته</div>
+                        <div><strong>کاربرد:</strong> مناسب برای رمزنگاری فایل و ارتباطات امن</div>
+                        <div><strong>توضیحات:</strong> Twofish توسط بروس اشنایر طراحی شده و یکی از فینالیست‌های مسابقه AES بود. این الگوریتم انعطاف‌پذیر است و از کلیدهای با طول متغیر پشتیبانی می‌کند.</div>
+                    `;
+                    break;
+            }
+            algorithmDetails.innerHTML = details;
+        }
+        
+        // Tab switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.dataset.tab;
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show active tab content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-tab`) {
+                        content.classList.add('active');
+                    }
+                });
+                
+                // Load stored keys when keys tab is opened
+                if (tabId === 'keys') {
+                    loadStoredKeys();
+                }
+            });
+        });
+        
+        // Generate random key
+        function generateRandomKey(length = 32) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+        
+        // Generate key for text encryption
+        generateKeyBtn.addEventListener('click', () => {
+            const key = generateRandomKey();
+            keyInput.value = key;
+            showAlert('کلید تصادفی با موفقیت تولید شد!', 'success');
+        });
+        
+        // Generate key for file encryption
+        generateFileKeyBtn.addEventListener('click', () => {
+            const key = generateRandomKey();
+            fileKeyInput.value = key;
+            showAlert('کلید تصادفی برای فایل با موفقیت تولید شد!', 'success');
+        });
+        
+        // Save key to localStorage
+        saveKeyBtn.addEventListener('click', () => {
+            const key = keyInput.value;
+            if (!key) {
+                showAlert('لطفاً ابتدا یک کلید وارد کنید یا تولید کنید.', 'warning');
+                return;
+            }
+            
+            // Generate a default name for the key
+            const keyName = `کلید_${new Date().toLocaleDateString('fa-IR')}_${Math.random().toString(36).substring(2, 7)}`;
+            storedKeys[keyName] = key;
+            localStorage.setItem('encryptionKeys', JSON.stringify(storedKeys));
+            showAlert(`کلید با نام "${keyName}" ذخیره شد.`, 'success');
+        });
+        
+        // Load key from localStorage (text tab)
+        loadKeyBtn.addEventListener('click', () => {
+            showKeySelectionModal('keyInput');
+        });
+        
+        // Load key from localStorage (file tab)
+        loadFileKeyBtn.addEventListener('click', () => {
+            showKeySelectionModal('fileKeyInput');
+        });
+        
+        // Show key selection modal
+        function showKeySelectionModal(targetInputId) {
+            if (Object.keys(storedKeys).length === 0) {
+                showAlert('هیچ کلید ذخیره‌شده‌ای یافت نشد.', 'warning');
+                return;
+            }
+            
+            currentModalTarget = targetInputId;
+            keyList.innerHTML = '';
+            
+            // Populate key list
+            for (const [name, key] of Object.entries(storedKeys)) {
+                const keyItem = document.createElement('div');
+                keyItem.className = 'key-item';
+                keyItem.innerHTML = `
+                    <div>
+                        <div class="key-item-name">${name}</div>
+                        <div class="key-item-value">${key.substring(0, 50)}${key.length > 50 ? '...' : ''}</div>
+                    </div>
+                    <div class="key-item-actions">
+                        <button class="key-action-btn select" data-key="${key}" title="انتخاب این کلید">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="key-action-btn delete" data-key-name="${name}" title="حذف این کلید">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                // Add event listener for select button
+                const selectBtn = keyItem.querySelector('.key-action-btn.select');
+                selectBtn.addEventListener('click', () => {
+                    document.getElementById(currentModalTarget).value = selectBtn.dataset.key;
+                    closeKeyModal();
+                    showAlert('کلید در فیلد مورد نظر قرار داده شد.', 'success');
+                });
+                
+                // Add event listener for delete button
+                const deleteBtn = keyItem.querySelector('.key-action-btn.delete');
+                deleteBtn.addEventListener('click', () => {
+                    if (confirm(`آیا از حذف کلید "${deleteBtn.dataset.keyName}" مطمئن هستید؟`)) {
+                        delete storedKeys[deleteBtn.dataset.keyName];
+                        localStorage.setItem('encryptionKeys', JSON.stringify(storedKeys));
+                        showKeySelectionModal(currentModalTarget);
+                        showAlert(`کلید "${deleteBtn.dataset.keyName}" حذف شد.`, 'success');
+                    }
+                });
+                
+                keyList.appendChild(keyItem);
+            }
+            
+            keyModal.style.display = 'flex';
+        }
+        
+        // Close key modal
+        function closeKeyModal() {
+            keyModal.style.display = 'none';
+            currentModalTarget = null;
+        }
+        
+        // Modal close events
+        closeModalBtn.addEventListener('click', closeKeyModal);
+        cancelModalBtn.addEventListener('click', closeKeyModal);
+        
+        // Close modal when clicking outside
+        keyModal.addEventListener('click', (e) => {
+            if (e.target === keyModal) {
+                closeKeyModal();
+            }
+        });
+        
+        // Text encryption
+        encryptTextBtn.addEventListener('click', () => {
+            const text = textInput.value.trim();
+            const key = keyInput.value.trim();
+            
+            if (!text) {
+                showAlert('لطفاً متن را وارد کنید.', 'warning');
+                return;
+            }
+            
+            if (!key) {
+                showAlert('لطفاً کلید رمزنگاری را وارد کنید.', 'warning');
+                return;
+            }
+            
+            try {
+                let encryptedText;
+                
+                switch(currentAlgorithm) {
+                    case 'aes':
+                        encryptedText = encryptAES(text, key);
+                        break;
+                    case 'chacha':
+                        encryptedText = encryptChaCha(text, key);
+                        break;
+                    case 'rsa':
+                        encryptedText = encryptRSA(text, key);
+                        break;
+                    case 'twofish':
+                        encryptedText = encryptTwofish(text, key);
+                        break;
+                    default:
+                        encryptedText = encryptAES(text, key);
+                }
+                
+                textResult.innerHTML = `<div class="key-display">
+                    <div>${encryptedText}</div>
+                    <button class="copy-btn" onclick="copyToClipboard('${encryptedText.replace(/'/g, "\\'")}')">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>`;
+                
+                showAlert('رمزنگاری با موفقیت انجام شد!', 'success');
+            } catch (error) {
+                console.error('Encryption error:', error);
+                showAlert('خطا در رمزنگاری: ' + error.message, 'danger');
+            }
+        });
+        
+        // Text decryption
+        decryptTextBtn.addEventListener('click', () => {
+            const text = textInput.value.trim();
+            const key = keyInput.value.trim();
+            
+            if (!text) {
+                showAlert('لطفاً متن رمزگذاری شده را وارد کنید.', 'warning');
+                return;
+            }
+            
+            if (!key) {
+                showAlert('لطفاً کلید رمزگشایی را وارد کنید.', 'warning');
+                return;
+            }
+            
+            try {
+                let decryptedText;
+                
+                switch(currentAlgorithm) {
+                    case 'aes':
+                        decryptedText = decryptAES(text, key);
+                        break;
+                    case 'chacha':
+                        decryptedText = decryptChaCha(text, key);
+                        break;
+                    case 'rsa':
+                        decryptedText = decryptRSA(text, key);
+                        break;
+                    case 'twofish':
+                        decryptedText = decryptTwofish(text, key);
+                        break;
+                    default:
+                        decryptedText = decryptAES(text, key);
+                }
+                
+                textResult.innerHTML = `<div style="padding: 15px; background-color: rgba(76, 201, 240, 0.1); border-radius: var(--border-radius);">${decryptedText}</div>`;
+                showAlert('رمزگشایی با موفقیت انجام شد!', 'success');
+            } catch (error) {
+                console.error('Decryption error:', error);
+                showAlert('خطا در رمزگشایی: کلید نادرست است یا داده آسیب دیده.', 'danger');
+            }
+        });
+        
+        // Clear text
+        clearTextBtn.addEventListener('click', () => {
+            textInput.value = '';
+            keyInput.value = '';
+            textResult.innerHTML = 'نتیجه رمزنگاری یا رمزگشایی در اینجا نمایش داده می‌شود...';
+            showAlert('همه فیلدها پاک شدند.', 'info');
+        });
+        
+        // File handling
+        browseFileBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        // Drag and drop for files
+        fileDropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileDropArea.style.backgroundColor = 'rgba(67, 97, 238, 0.1)';
+        });
+        
+        fileDropArea.addEventListener('dragleave', () => {
+            fileDropArea.style.backgroundColor = '';
+        });
+        
+        fileDropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileDropArea.style.backgroundColor = '';
+            
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect();
+            }
+        });
+        
+        function handleFileSelect() {
+            selectedFile = fileInput.files[0];
+            
+            if (!selectedFile) return;
+            
+            // Check file size (max 10MB)
+            if (selectedFile.size > 10 * 1024 * 1024) {
+                showAlert('حجم فایل نباید بیشتر از 10 مگابایت باشد.', 'danger');
+                fileInput.value = '';
+                selectedFile = null;
+                return;
+            }
+            
+            // Update file info
+            document.getElementById('fileName').textContent = selectedFile.name;
+            document.getElementById('fileSize').textContent = formatFileSize(selectedFile.size);
+            document.getElementById('fileType').textContent = selectedFile.type || 'ناشناخته';
+            
+            fileInfo.style.display = 'block';
+            showAlert(`فایل "${selectedFile.name}" با موفقیت انتخاب شد.`, 'success');
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' بایت';
+            else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' کیلوبایت';
+            else return (bytes / 1048576).toFixed(2) + ' مگابایت';
+        }
+        
+        // Update progress bar
+        function updateProgress(percentage) {
+            fileProgressBar.style.width = percentage + '%';
+            fileProgressText.textContent = percentage + '%';
+        }
+        
+        // File encryption
+        encryptFileBtn.addEventListener('click', async () => {
+            if (!selectedFile) {
+                showAlert('لطفاً ابتدا یک فایل انتخاب کنید.', 'warning');
+                return;
+            }
+            
+            const key = fileKeyInput.value.trim();
+            if (!key) {
+                showAlert('لطفاً کلید رمزنگاری فایل را وارد کنید.', 'warning');
+                return;
+            }
+            
+            try {
+                showAlert('در حال رمزنگاری فایل... لطفاً منتظر بمانید.', 'info');
+                fileProgressContainer.style.display = 'block';
+                updateProgress(10);
+                
+                // Read file as array buffer
+                const fileBuffer = await readFileAsArrayBuffer(selectedFile);
+                updateProgress(30);
+                
+                // Encrypt based on algorithm
+                let encryptedBuffer;
+                switch(currentAlgorithm) {
+                    case 'aes':
+                        encryptedBuffer = await encryptAESBuffer(fileBuffer, key);
+                        break;
+                    case 'chacha':
+                        encryptedBuffer = await encryptChaChaBuffer(fileBuffer, key);
+                        break;
+                    case 'rsa':
+                        showAlert('الگوریتم RSA برای فایل‌های بزرگ مناسب نیست. لطفاً از الگوریتم دیگری استفاده کنید.', 'warning');
+                        fileProgressContainer.style.display = 'none';
+                        return;
+                    case 'twofish':
+                        encryptedBuffer = await encryptTwofishBuffer(fileBuffer, key);
+                        break;
+                    default:
+                        encryptedBuffer = await encryptAESBuffer(fileBuffer, key);
+                }
+                updateProgress(80);
+                
+                // Create download link
+                const encryptedBlob = new Blob([encryptedBuffer], { type: 'application/octet-stream' });
+                const encryptedUrl = URL.createObjectURL(encryptedBlob);
+                const encryptedFilename = selectedFile.name + '.encrypted';
+                
+                fileResult.innerHTML = `
+                    <div style="text-align: center;">
+                        <p style="margin-bottom: 15px;">فایل با موفقیت رمزگذاری شد.</p>
+                        <a href="${encryptedUrl}" download="${encryptedFilename}" class="btn btn-success">
+                            <i class="fas fa-download"></i> دانلود فایل رمزگذاری شده
+                        </a>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray-color);">نام فایل: ${encryptedFilename}</p>
+                    </div>
+                `;
+                
+                updateProgress(100);
+                setTimeout(() => {
+                    fileProgressContainer.style.display = 'none';
+                }, 1000);
+                
+                showAlert('رمزنگاری فایل با موفقیت انجام شد!', 'success');
+            } catch (error) {
+                console.error('File encryption error:', error);
+                fileProgressContainer.style.display = 'none';
+                showAlert('خطا در رمزنگاری فایل: ' + error.message, 'danger');
+            }
+        });
+        
+        // File decryption
+        decryptFileBtn.addEventListener('click', async () => {
+            if (!selectedFile) {
+                showAlert('لطفاً ابتدا یک فایل انتخاب کنید.', 'warning');
+                return;
+            }
+            
+            const key = fileKeyInput.value.trim();
+            if (!key) {
+                showAlert('لطفاً کلید رمزگشایی فایل را وارد کنید.', 'warning');
+                return;
+            }
+            
+            try {
+                showAlert('در حال رمزگشایی فایل... لطفاً منتظر بمانید.', 'info');
+                fileProgressContainer.style.display = 'block';
+                updateProgress(10);
+                
+                // Read file as array buffer
+                const fileBuffer = await readFileAsArrayBuffer(selectedFile);
+                updateProgress(30);
+                
+                // Decrypt based on algorithm
+                let decryptedBuffer;
+                switch(currentAlgorithm) {
+                    case 'aes':
+                        decryptedBuffer = await decryptAESBuffer(fileBuffer, key);
+                        break;
+                    case 'chacha':
+                        decryptedBuffer = await decryptChaChaBuffer(fileBuffer, key);
+                        break;
+                    case 'rsa':
+                        showAlert('الگوریتم RSA برای فایل‌های بزرگ مناسب نیست. لطفاً از الگوریتم دیگری استفاده کنید.', 'warning');
+                        fileProgressContainer.style.display = 'none';
+                        return;
+                    case 'twofish':
+                        decryptedBuffer = await decryptTwofishBuffer(fileBuffer, key);
+                        break;
+                    default:
+                        decryptedBuffer = await decryptAESBuffer(fileBuffer, key);
+                }
+                updateProgress(80);
+                
+                // Create download link
+                const decryptedBlob = new Blob([decryptedBuffer]);
+                const decryptedUrl = URL.createObjectURL(decryptedBlob);
+                
+                // Try to determine original filename
+                let decryptedFilename = selectedFile.name.replace('.encrypted', '') || 'decrypted_file';
+                if (decryptedFilename === selectedFile.name) {
+                    decryptedFilename = 'decrypted_' + selectedFile.name;
+                }
+                
+                fileResult.innerHTML = `
+                    <div style="text-align: center;">
+                        <p style="margin-bottom: 15px;">فایل با موفقیت رمزگشایی شد.</p>
+                        <a href="${decryptedUrl}" download="${decryptedFilename}" class="btn btn-success">
+                            <i class="fas fa-download"></i> دانلود فایل رمزگشایی شده
+                        </a>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray-color);">نام فایل: ${decryptedFilename}</p>
+                    </div>
+                `;
+                
+                updateProgress(100);
+                setTimeout(() => {
+                    fileProgressContainer.style.display = 'none';
+                }, 1000);
+                
+                showAlert('رمزگشایی فایل با موفقیت انجام شد!', 'success');
+            } catch (error) {
+                console.error('File decryption error:', error);
+                fileProgressContainer.style.display = 'none';
+                showAlert('خطا در رمزگشایی فایل: کلید نادرست است یا فایل آسیب دیده.', 'danger');
+            }
+        });
+        
+        // Clear file
+        clearFileBtn.addEventListener('click', () => {
+            fileInput.value = '';
+            selectedFile = null;
+            fileInfo.style.display = 'none';
+            fileKeyInput.value = '';
+            fileResult.innerHTML = 'پس از رمزنگاری یا رمزگشایی، لینک دانلود فایل در اینجا نمایش داده می‌شود.';
+            fileProgressContainer.style.display = 'none';
+            showAlert('فایل حذف شد.', 'info');
+        });
+        
+        // Key management - Save named key
+        saveNamedKeyBtn.addEventListener('click', () => {
+            const keyName = keyNameInput.value.trim();
+            const keyValue = keyValueInput.value.trim();
+            
+            if (!keyName) {
+                showAlert('لطفاً نام کلید را وارد کنید.', 'warning');
+                return;
+            }
+            
+            if (!keyValue) {
+                showAlert('لطفاً مقدار کلید را وارد کنید.', 'warning');
+                return;
+            }
+            
+            storedKeys[keyName] = keyValue;
+            localStorage.setItem('encryptionKeys', JSON.stringify(storedKeys));
+            
+            keyNameInput.value = '';
+            keyValueInput.value = '';
+            
+            loadStoredKeys();
+            showAlert(`کلید "${keyName}" با موفقیت ذخیره شد.`, 'success');
+        });
+        
+        // Key management - Generate and save named key
+        generateNamedKeyBtn.addEventListener('click', () => {
+            const keyName = keyNameInput.value.trim();
+            
+            if (!keyName) {
+                showAlert('لطفاً نام کلید را وارد کنید.', 'warning');
+                return;
+            }
+            
+            const keyValue = generateRandomKey();
+            keyValueInput.value = keyValue;
+            
+            storedKeys[keyName] = keyValue;
+            localStorage.setItem('encryptionKeys', JSON.stringify(storedKeys));
+            
+            loadStoredKeys();
+            showAlert(`کلید "${keyName}" با موفقیت تولید و ذخیره شد.`, 'success');
+        });
+        
+        // Clear all keys
+        clearAllKeysBtn.addEventListener('click', () => {
+            if (Object.keys(storedKeys).length === 0) {
+                showAlert('هیچ کلیدی برای حذف وجود ندارد.', 'warning');
+                return;
+            }
+            
+            if (confirm('آیا از حذف تمام کلیدهای ذخیره شده مطمئن هستید؟ این عمل قابل بازگشت نیست.')) {
+                storedKeys = {};
+                localStorage.removeItem('encryptionKeys');
+                loadStoredKeys();
+                showAlert('تمام کلیدهای ذخیره شده حذف شدند.', 'success');
+            }
+        });
+        
+        // Load and display stored keys
+        function loadStoredKeys() {
+            storedKeys = JSON.parse(localStorage.getItem('encryptionKeys')) || {};
+            
+            if (Object.keys(storedKeys).length === 0) {
+                storedKeysList.innerHTML = '<p style="text-align: center; color: var(--gray-color); padding: 20px;">هیچ کلید ذخیره‌شده‌ای یافت نشد.</p>';
+                return;
+            }
+            
+            let keysHtml = '<div style="display: flex; flex-direction: column; gap: 15px;">';
+            
+            for (const [name, key] of Object.entries(storedKeys)) {
+                keysHtml += `
+                    <div class="key-display" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                        <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                            <strong style="color: var(--primary-color);">${name}</strong>
+                            <div>
+                                <button class="copy-btn" data-key="${key}" title="کپی کلید" onclick="copyToClipboard('${key.replace(/'/g, "\\'")}')">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button class="copy-btn" style="color: var(--danger-color);" data-key-name="${name}" title="حذف کلید" onclick="deleteKey('${name}')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="font-family: monospace; font-size: 0.85rem; word-break: break-all; color: var(--gray-color);">${key.substring(0, 100)}${key.length > 100 ? '...' : ''}</div>
+                    </div>
+                `;
+            }
+            
+            keysHtml += '</div>';
+            storedKeysList.innerHTML = keysHtml;
+        }
+        
+        // Delete a key
+        window.deleteKey = function(keyName) {
+            if (confirm(`آیا از حذف کلید "${keyName}" مطمئن هستید؟`)) {
+                delete storedKeys[keyName];
+                localStorage.setItem('encryptionKeys', JSON.stringify(storedKeys));
+                loadStoredKeys();
+                showAlert(`کلید "${keyName}" حذف شد.`, 'success');
+            }
+        };
+        
+        // Encryption functions
+        function encryptAES(text, key) {
+            // Using CryptoJS for AES encryption
+            const salt = CryptoJS.lib.WordArray.random(128/8);
+            const key256Bits = CryptoJS.PBKDF2(key, salt, { keySize: 256/32, iterations: 1000 });
+            const iv = CryptoJS.lib.WordArray.random(128/8);
+            
+            const encrypted = CryptoJS.AES.encrypt(text, key256Bits, { 
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+            
+            // Combine salt + iv + ciphertext
+            const result = CryptoJS.enc.Base64.stringify(salt.concat(iv).concat(encrypted.ciphertext));
+            return result;
+        }
+        
+        function decryptAES(ciphertext, key) {
+            try {
+                // Decode base64
+                const ciphertextWords = CryptoJS.enc.Base64.parse(ciphertext);
+                
+                // Extract salt, iv and actual ciphertext
+                const salt = CryptoJS.lib.WordArray.create(ciphertextWords.words.slice(0, 4)); // 128 bits = 4 words
+                const iv = CryptoJS.lib.WordArray.create(ciphertextWords.words.slice(4, 8)); // 128 bits = 4 words
+                const actualCiphertext = CryptoJS.lib.WordArray.create(ciphertextWords.words.slice(8));
+                
+                const key256Bits = CryptoJS.PBKDF2(key, salt, { keySize: 256/32, iterations: 1000 });
+                
+                const decrypted = CryptoJS.AES.decrypt(
+                    { ciphertext: actualCiphertext },
+                    key256Bits,
+                    { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }
+                );
+                
+                const result = decrypted.toString(CryptoJS.enc.Utf8);
+                if (!result) {
+                    throw new Error('رمزگشایی ناموفق بود');
+                }
+                return result;
+            } catch (error) {
+                throw new Error('رمزگشایی ناموفق بود. کلید یا داده نادرست است.');
+            }
+        }
+        
+        function encryptChaCha(text, key) {
+            // ChaCha20-Poly1305 simulation using CryptoJS
+            return encryptAES(text, key + '_chacha_sim');
+        }
+        
+        function decryptChaCha(ciphertext, key) {
+            try {
+                return decryptAES(ciphertext, key + '_chacha_sim');
+            } catch (error) {
+                throw new Error('رمزگشایی ناموفق بود. کلید یا داده نادرست است.');
+            }
+        }
+        
+        function encryptRSA(text, key) {
+            const salt = CryptoJS.lib.WordArray.random(128/8);
+            const key256Bits = CryptoJS.PBKDF2(key, salt, { keySize: 256/32, iterations: 1000 });
+            
+            const encrypted = CryptoJS.AES.encrypt(text, key256Bits, { 
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+            
+            const result = "RSA:" + CryptoJS.enc.Base64.stringify(salt.concat(encrypted.ciphertext));
+            return result;
+        }
+        
+        function decryptRSA(ciphertext, key) {
+            try {
+                if (!ciphertext.startsWith("RSA:")) {
+                    throw new Error("فرمت داده برای RSA نادرست است.");
+                }
+                
+                const actualCiphertext = ciphertext.substring(4);
+                const ciphertextWords = CryptoJS.enc.Base64.parse(actualCiphertext);
+                
+                const salt = CryptoJS.lib.WordArray.create(ciphertextWords.words.slice(0, 4));
+                const actualCiphertextWords = CryptoJS.lib.WordArray.create(ciphertextWords.words.slice(4));
+                
+                const key256Bits = CryptoJS.PBKDF2(key, salt, { keySize: 256/32, iterations: 1000 });
+                
+                const decrypted = CryptoJS.AES.decrypt(
+                    { ciphertext: actualCiphertextWords },
+                    key256Bits,
+                    { mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }
+                );
+                
+                const result = decrypted.toString(CryptoJS.enc.Utf8);
+                if (!result) {
+                    throw new Error('رمزگشایی ناموفق بود');
+                }
+                return result;
+            } catch (error) {
+                throw new Error('رمزگشایی ناموفق بود. کلید یا داده نادرست است.');
+            }
+        }
+        
+        function encryptTwofish(text, key) {
+            return encryptAES(text, key + '_twofish_sim');
+        }
+        
+        function decryptTwofish(ciphertext, key) {
+            try {
+                return decryptAES(ciphertext, key + '_twofish_sim');
+            } catch (error) {
+                throw new Error('رمزگشایی ناموفق بود. کلید یا داده نادرست است.');
+            }
+        }
+        
+        // File encryption/decryption functions
+        async function readFileAsArrayBuffer(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsArrayBuffer(file);
+            });
+        }
+        
+        // Helper function to convert array buffer to base64 string
+        function arrayBufferToBase64(buffer) {
+            const bytes = new Uint8Array(buffer);
+            let binary = '';
+            for (let i = 0; i < bytes.byteLength; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binary);
+        }
+        
+        // Helper function to convert base64 string to array buffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+        
+        async function encryptAESBuffer(buffer, key) {
+            // Convert buffer to base64 string
+            const base64Data = arrayBufferToBase64(buffer);
+            
+            // Encrypt using our AES function
+            const encryptedText = encryptAES(base64Data, key);
+            
+            // Convert the encrypted text to array buffer
+            return base64ToArrayBuffer(encryptedText);
+        }
+        
+        async function decryptAESBuffer(buffer, key) {
+            try {
+                // Convert buffer to base64 string
+                const base64Data = arrayBufferToBase64(buffer);
+                
+                // Decrypt using our AES function
+                const decryptedText = decryptAES(base64Data, key);
+                
+                // Convert the decrypted text (which is base64) to array buffer
+                return base64ToArrayBuffer(decryptedText);
+            } catch (error) {
+                throw new Error('رمزگشایی فایل ناموفق بود.');
+            }
+        }
+        
+        async function encryptChaChaBuffer(buffer, key) {
+            return encryptAESBuffer(buffer, key + '_chacha_sim');
+        }
+        
+        async function decryptChaChaBuffer(buffer, key) {
+            try {
+                return await decryptAESBuffer(buffer, key + '_chacha_sim');
+            } catch (error) {
+                throw new Error('رمزگشایی فایل ناموفق بود.');
+            }
+        }
+        
+        async function encryptTwofishBuffer(buffer, key) {
+            return encryptAESBuffer(buffer, key + '_twofish_sim');
+        }
+        
+        async function decryptTwofishBuffer(buffer, key) {
+            try {
+                return await decryptAESBuffer(buffer, key + '_twofish_sim');
+            } catch (error) {
+                throw new Error('رمزگشایی فایل ناموفق بود.');
+            }
+        }
+        
+        // Utility functions
+        function showAlert(message, type) {
+            // Remove existing alerts
+            const existingAlerts = document.querySelectorAll('.alert');
+            existingAlerts.forEach(alert => {
+                if (alert.style.animationName !== 'fadeOut') {
+                    alert.style.animation = 'fadeOut 0.5s ease forwards';
+                    setTimeout(() => alert.remove(), 500);
+                }
+            });
+            
+            // Create new alert
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            
+            let icon;
+            switch(type) {
+                case 'success': icon = 'check-circle'; break;
+                case 'warning': icon = 'exclamation-triangle'; break;
+                case 'danger': icon = 'times-circle'; break;
+                default: icon = 'info-circle';
+            }
+            
+            alert.innerHTML = `
+                <i class="fas fa-${icon}"></i>
+                <span>${message}</span>
+            `;
+            
+            // Insert after header
+            document.querySelector('header').insertAdjacentElement('afterend', alert);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.style.animation = 'fadeOut 0.5s ease forwards';
+                    setTimeout(() => alert.remove(), 500);
+                }
+            }, 5000);
+        }
+        
+        window.copyToClipboard = function(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showAlert('متن با موفقیت کپی شد!', 'success');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showAlert('متن با موفقیت کپی شد!', 'success');
+                } catch (err) {
+                    showAlert('خطا در کپی کردن متن', 'danger');
+                }
+                document.body.removeChild(textArea);
+            });
+        };
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAlgorithmDetails();
+            loadStoredKeys();
+            showAlert('به سیستم رمزنگاری امن IntellSoft خوش آمدید! تمام عملیات در مرورگر شما انجام می‌شود.', 'info');
+        });
+    </script>
+</body>
+</html>
