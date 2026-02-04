@@ -22,7 +22,7 @@
 
 ## 🚀 نسخه آنلاین
 
-ابزار را آنلاین امتحان کنید: [https://intellsoft.ir/encryption-tool](https://intellsoft.ir/encryption-tool)
+ابزار را آنلاین امتحان کنید: [https://intellsoft.github.io/secure-client-side-encryption-tool/](https://intellsoft.github.io/secure-client-side-encryption-tool/)
 
 ## 📦 نصب و استفاده
 
